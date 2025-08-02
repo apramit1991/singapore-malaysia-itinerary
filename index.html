@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore-Malaysia Adventure | Aug 9-17, 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 0;
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            border-radius: 15px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .day-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .day-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .day-location {
+            font-size: 1.1em;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .cost-badge {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .activities {
+            margin: 20px 0;
+        }
+        
+        .activity {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 3px solid #ffd93d;
+        }
+        
+        .instagram-spot {
+            background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+        
+        .expense-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .expense-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid #e1e8ff;
+            text-align: center;
+        }
+        
+        .expense-amount {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .expense-label {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #a8e6cf, #7fcdcd);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        
+        .tips-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .tip {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .budget-summary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .budget-total {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .quick-nav {
+            position: sticky;
+            top: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: transform 0.2s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .day-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cost-badge {
+                margin-top: 10px;
+            }
+            
+            .expense-breakdown {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .malaysia-flag {
+            border-left-color: #ff6b6b;
+        }
+        
+        .return-singapore {
+            border-left-color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🇸🇬 Singapore-Malaysia Adventure 🇲🇾</h1>
+            <p>August 9-17, 2025 | Budget-Friendly Instagram-Worthy Journey</p>
+        </div>
+        
+        <div class="quick-nav">
+            <div class="nav-buttons">
+                <button class="nav-btn" onclick="scrollToDay(1)">Day 1</button>
+                <button class="nav-btn" onclick="scrollToDay(2)">Day 2</button>
+                <button class="nav-btn" onclick="scrollToDay(3)">Day 3</button>
+                <button class="nav-btn" onclick="scrollToDay(4)">Day 4</button>
+                <button class="nav-btn" onclick="scrollToDay(5)">Day 5</button>
+                <button class="nav-btn" onclick="scrollToDay(6)">Day 6</button>
+                <button class="nav-btn" onclick="scrollToDay(7)">Day 7</button>
+                <button class="nav-btn" onclick="scrollToDay(8)">Day 8</button>
+                <button class="nav-btn" onclick="scrollToDay(9)">Day 9</button>
+                <button class="nav-btn" onclick="scrollToBudget()">Budget</button>
+                <button class="nav-btn" onclick="scrollToTips()">Photo Tips</button>
+            </div>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="day-card" id="day1">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 1 - Saturday, Aug 9</div>
+                    <div class="day-location">🎆 Singapore National Day Celebration</div>
+                </div>
+                <div class="cost-badge">~SG$28</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Start at <span class="instagram-spot">Chinatown</span> for breakfast at Maxwell Hawker Centre (SG$3-6 per meal). Wander the colorful <span class="instagram-spot">Buddha Tooth Relic Temple</span> and <span class="instagram-spot">Sri Mariamman Temple</span> (free).
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> Explore <span class="instagram-spot">Marina Bay</span> - the Padang, Esplanade and Merlion Park. Join locals at <span class="instagram-spot">Marina Barrage</span> or The Promontory to watch the National Day Parade fly-past and fireworks (free).
+                </div>
+                <div class="activity">
+                    <strong>Evening:</strong> Night photography of city skyline and fireworks from <span class="instagram-spot">Helix Bridge</span> and <span class="instagram-spot">Singapore Flyer</span> area.
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">Free</div>
+                    <div class="expense-label">Temples & Fireworks</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$20</div>
+                    <div class="expense-label">Food</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$8</div>
+                    <div class="expense-label">Transport</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Arrive early at Marina Bay to "chope" a spot for fireworks; bring a picnic mat.</p>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-card" id="day2">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 2 - Sunday, Aug 10</div>
+                    <div class="day-location">🌺 Botanic Gardens & Gardens by the Bay</div>
+                </div>
+                <div class="cost-badge">SG$70-86</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Visit <span class="instagram-spot">Singapore Botanic Gardens</span> (UNESCO site, free), perfect for tropical photos. Head to trendy <span class="instagram-spot">Haji Lane</span> and <span class="instagram-spot">Arab Street</span> in Kampong Glam - colorful murals, boutique shops and the golden <span class="instagram-spot">Sultan Mosque</span> (free).
+                </div>
+                <div class="activity">
+                    <strong>Afternoon/Evening:</strong> Explore <span class="instagram-spot">Gardens by the Bay</span>. Stroll the outdoor <span class="instagram-spot">Supertree Grove</span> (free) and catch Garden Rhapsody light shows at 7:45 PM & 8:45 PM (free).
+                </div>
+                <div class="activity">
+                    <strong>Optional:</strong> Buy <span class="instagram-spot">Flower Dome + Cloud Forest</span> combo ticket (SG$46) and optional <span class="instagram-spot">OCBC Skyway</span> (SG$14).
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">SG$46</div>
+                    <div class="expense-label">Garden Domes</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$14</div>
+                    <div class="expense-label">Skyway (Optional)</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$20</div>
+                    <div class="expense-label">Food</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$10</div>
+                    <div class="expense-label">Transport</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Evening picnic near <span class="instagram-spot">Marina Bay Sands</span> for free view of the light show.</p>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-card" id="day3">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 3 - Monday, Aug 11</div>
+                    <div class="day-location">🏖️ Sentosa & Beaches</div>
+                </div>
+                <div class="cost-badge">SG$49-77</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Take MRT to HarbourFront and walk the <span class="instagram-spot">Sentosa Boardwalk</span> (free) or ride Sentosa Express (SG$4). Spend morning at <span class="instagram-spot">Siloso Beach</span> or <span class="instagram-spot">Palawan Beach</span> - swim, relax and take photos on the suspension bridge to Southernmost Point of Continental Asia (free).
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> For panoramic views, ride the <span class="instagram-spot">Mount Faber-Sentosa Cable Car</span> (SG$24.50-35) or hike the <span class="instagram-spot">Imbiah Nature Trail</span> or visit <span class="instagram-spot">Fort Siloso Skywalk</span> (free).
+                </div>
+                <div class="activity">
+                    <strong>Evening:</strong> Watch the <span class="instagram-spot">Wings of Time</span> multimedia show at the beach (SG$17.10).
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">SG$4</div>
+                    <div class="expense-label">Sentosa Express</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$17.10</div>
+                    <div class="expense-label">Wings of Time</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$24.50</div>
+                    <div class="expense-label">Cable Car (Optional)</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Carry water and snacks; beaches are free so keep the day low-cost.</p>
+        </div>
+
+        <!-- Day 4 -->
+        <div class="day-card" id="day4">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 4 - Tuesday, Aug 12</div>
+                    <div class="day-location">🎨 Art, Culture & Nightlife</div>
+                </div>
+                <div class="cost-badge">SG$60-100</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Explore <span class="instagram-spot">Little India</span> - snap photos of the vividly painted <span class="instagram-spot">House of Tan Teng Niah</span> and browse Tekka Market (free).
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> Visit <span class="instagram-spot">ArtScience Museum</span> (Future World exhibition, SG$30) OR the new <span class="instagram-spot">Singapore Oceanarium</span> at Resorts World Sentosa (SG$50 non-peak / SG$55 peak).
+                </div>
+                <div class="activity">
+                    <strong>Evening:</strong> Walk along <span class="instagram-spot">Clarke Quay</span> and <span class="instagram-spot">Boat Quay</span>, cross <span class="instagram-spot">Helix Bridge</span>. Optionally ride the <span class="instagram-spot">Marina Bay Sands SkyPark Observation Deck</span> (SG$35-39).
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">SG$30-50</div>
+                    <div class="expense-label">Museum/Oceanarium</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$35-39</div>
+                    <div class="expense-label">SkyPark (Optional)</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> For nightlife, wander through <span class="instagram-spot">Clarke Quay</span>; bars can be pricey, so stick to happy-hour deals or enjoy the river views.</p>
+        </div>
+
+        <!-- Day 5 -->
+        <div class="day-card malaysia-flag" id="day5">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 5 - Wednesday, Aug 13</div>
+                    <div class="day-location">🇲🇾 Travel to Kuala Lumpur (Day 1 in Malaysia)</div>
+                </div>
+                <div class="cost-badge">~SG$54 + RM 50-148</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Take bus from Singapore to Kuala Lumpur (SG$25-30; journey 4.5-5 hours after customs). Arrive around noon and check into budget hostel/private room (~RM 50 per night).
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> Lunch at Jalan Alor (street food ~RM 10-15). Wander the <span class="instagram-spot">KLCC Park</span> and photograph exterior of <span class="instagram-spot">Petronas Twin Towers</span> (free).
+                </div>
+                <div class="activity">
+                    <strong>Optional:</strong> Go up to the <span class="instagram-spot">skybridge & observation deck</span> - tickets RM 98 for adults.
+                </div>
+                <div class="activity">
+                    <strong>Evening:</strong> Watch free Lake Symphony fountain shows outside Suria KLCC and explore Bukit Bintang.
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">SG$30</div>
+                    <div class="expense-label">Bus to KL</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">RM 50</div>
+                    <div class="expense-label">Hostel</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">RM 98</div>
+                    <div class="expense-label">Petronas (Optional)</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Book bus in advance; use MRT or Grab to move around the city (rides < SG$5).</p>
+        </div>
+
+        <!-- Day 6 -->
+        <div class="day-card malaysia-flag" id="day6">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 6 - Thursday, Aug 14</div>
+                    <div class="day-location">🇲🇾 Kuala Lumpur (Day 2)</div>
+                </div>
+                <div class="cost-badge">~RM 100 (~SG$30)</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Take KTM train or Grab to <span class="instagram-spot">Batu Caves</span>. The main temple cave is <strong>free to enter</strong>; transport costs about RM 1.30 each way by train or RM 3-4 by Grab. Climb the colorful 272 steps for epic photos.
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> Visit <span class="instagram-spot">Kuala Lumpur Forest Eco Park</span> (canopy walk) - small entrance fee (~RM 10). Explore historic <span class="instagram-spot">Merdeka Square</span>, Sultan Abdul Samad Building, <span class="instagram-spot">Thean Hou Temple</span> and <span class="instagram-spot">Central Market</span> (free).
+                </div>
+                <div class="activity">
+                    <strong>Evening:</strong> Enjoy dinner in <span class="instagram-spot">Chinatown</span>.
+                </div>
+                <div class="activity">
+                    <strong>Optional:</strong> Side-trip to <span class="instagram-spot">Malacca</span> - 2hr bus (RM 10-14 each way) to explore <span class="instagram-spot">Jonker Street Night Market</span> and <span class="instagram-spot">A Famosa ruins</span>.
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">Free</div>
+                    <div class="expense-label">Batu Caves Entry</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">RM 10</div>
+                    <div class="expense-label">KL Eco Park</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">RM 50</div>
+                    <div class="expense-label">Hostel</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Wear modest clothing for temples; hold belongings tight at busy markets.</p>
+        </div>
+
+        <!-- Day 7 -->
+        <div class="day-card return-singapore" id="day7">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 7 - Friday, Aug 15</div>
+                    <div class="day-location">🇸🇬 Return to Singapore & Bird Paradise</div>
+                </div>
+                <div class="cost-badge">SG$114</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Bus back to Singapore (SG$25-30). Check back into acquaintance's place.
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> Travel to Mandai via MRT and ride the Mandai Khatib Shuttle (SG$2.50 each way) to the <span class="instagram-spot">Bird Paradise</span> (new bird park). Adult tickets cost SG$49. Explore the aviaries, penguin cove and waterfall.
+                </div>
+                <div class="activity">
+                    <strong>Evening:</strong> If energy permits, visit Night Safari or River Wonders (expensive ~SG$78+), or stroll through <span class="instagram-spot">Orchard Road</span> or colorful Peranakan shophouses at <span class="instagram-spot">Katong/Joo Chiat</span> (free).
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">SG$30</div>
+                    <div class="expense-label">Bus to Singapore</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$49</div>
+                    <div class="expense-label">Bird Paradise</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$5</div>
+                    <div class="expense-label">Mandai Shuttle</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Buy Bird Paradise tickets online and visit early morning to avoid crowds.</p>
+        </div>
+
+        <!-- Day 8 -->
+        <div class="day-card" id="day8">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 8 - Saturday, Aug 16</div>
+                    <div class="day-location">🌿 Adventure & Skyline Views</div>
+                </div>
+                <div class="cost-badge">SG$30-60</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> For a cheap adventure, hike the <span class="instagram-spot">MacRitchie Reservoir</span> or <span class="instagram-spot">TreeTop Walk</span> (free); alternate option is to take the bumboat to <span class="instagram-spot">Pulau Ubin</span> for cycling (ferry ~SG$4 each way and bike rental SG$10).
+                </div>
+                <div class="activity">
+                    <strong>Afternoon:</strong> Visit <span class="instagram-spot">Singapore Flyer</span> - tickets SG$40 for adults (10 AM - 10 PM; last ride 9:30 PM). Another option is the adrenaline-packed AJ Hackett Sentosa bungee jump (expensive).
+                </div>
+                <div class="activity">
+                    <strong>Sunset:</strong> <span class="instagram-spot">Mount Faber</span> or <span class="instagram-spot">Henderson Waves</span> (free) for elevated skyline photos.
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">Free-SG$18</div>
+                    <div class="expense-label">Nature/Cycling</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$40</div>
+                    <div class="expense-label">Singapore Flyer</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> MacRitchie & Pulau Ubin offer nature and wildlife; carry water and mosquito repellent.</p>
+        </div>
+
+        <!-- Day 9 -->
+        <div class="day-card" id="day9">
+            <div class="day-header">
+                <div>
+                    <div class="day-title">Day 9 - Sunday, Aug 17</div>
+                    <div class="day-location">🛍️ Last Day & Shopping</div>
+                </div>
+                <div class="cost-badge">SG$25-30</div>
+            </div>
+            <div class="activities">
+                <div class="activity">
+                    <strong>Morning:</strong> Spend your final morning exploring <span class="instagram-spot">Little India</span> or <span class="instagram-spot">Bugis Street Market</span> for affordable souvenirs and photos. Visit the stately <span class="instagram-spot">Raffles Hotel</span> exterior and <span class="instagram-spot">Chijmes</span> (free).
+                </div>
+                <div class="activity">
+                    <strong>Departure:</strong> Pack up and depart for Changi Airport via MRT (SG$2).
+                </div>
+            </div>
+            <div class="expense-breakdown">
+                <div class="expense-item">
+                    <div class="expense-amount">Free</div>
+                    <div class="expense-label">Most Activities</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$20</div>
+                    <div class="expense-label">Food</div>
+                </div>
+                <div class="expense-item">
+                    <div class="expense-amount">SG$5</div>
+                    <div class="expense-label">MRT to Airport</div>
+                </div>
+            </div>
+            <p><strong>💡 Tip:</strong> Leave ample time for airport security; Changi itself is an attraction with indoor gardens and slides.</p>
+        </div>
+
+        <!-- Budget Summary -->
+        <div class="budget-summary" id="budget">
+            <h2>💰 Budget Summary</h2>
+            <div class="budget-total">SG$460-520</div>
+            <p>≈ INR 31,000-35,000 over the nine-day trip</p>
+            <p>Two days in Malaysia add around RM 200-250 (≈SG$60-75)</p>
+            <div style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">
+                <p><strong>Exchange Rate:</strong> 1 SGD ≈ RM 3.40 (Aug 2025)</p>
+                <p>Accommodation in Singapore is free (staying with acquaintance)</p>
+                <p>Malaysia hostel: ~RM 50 per night</p>
+            </div>
+        </div>
+
+        <!-- Instagram Tips -->
+        <div class="tips-section" id="tips">
+            <h3>📸 Instagram-Worthy Photo Tips</h3>
+            <div class="tip">
+                <strong>🌅 Golden Hour:</strong> Plan visits to Supertree Grove, Marina Bay and Helix Bridge in the evening for vibrant skies with soft light.
+            </div>
+            <div class="tip">
+                <strong>🌺 Gardens by the Bay:</strong> The Cloud Forest waterfall and aerial walkways make dramatic backdrops. Arrive early or late to avoid crowds.
+            </div>
+            <div class="tip">
+                <strong>🎨 Haji Lane & Kampong Glam:</strong> Colorful murals, shophouses and the Sultan Mosque are perfect for street-style photos.
+            </div>
+            <div class="tip">
+                <strong>🏖️ Sentosa Beaches:</strong> The suspension bridge at Palawan Beach and WWII-era Fort Siloso Skywalk offer unique angles.
+            </div>
+            <div class="tip">
+                <strong>🏙️ Marina Bay Sands SkyPark:</strong> Though not cheap, the observation deck gives panoramic shots of the skyline.
+            </div>
+            <div class="tip">
+                <strong>🇲🇾 Kuala Lumpur:</strong> The vibrant steps of Batu Caves, mirrored Petronas towers, and KL Forest Eco Park canopy walk provide eye-catching scenes.
+            </div>
+            <div class="tip">
+                <strong>🌿 Nature Spots:</strong> MacRitchie Reservoir treetop walk and Pulau Ubin offer lush greenery and wildlife; wide-angle lens captures depth.
+            </div>
+        </div>
+
+        <!-- Quick Reference -->
+        <div style="background: #f8f9ff; padding: 25px; border-radius: 15px; margin: 20px 0;">
+            <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">🚇 Quick Transport Reference</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #667eea;">
+                    <strong>Singapore MRT/Bus:</strong><br>
+                    ~SG$8-10 per day<br>
+                    <small>Use SimplyGo or EZ-Link card</small>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #ff6b6b;">
+                    <strong>Singapore ↔ KL Bus:</strong><br>
+                    SG$25-30 (4.5-5 hours)<br>
+                    <small>Book in advance online</small>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #4ecdc4;">
+                    <strong>KL Local Transport:</strong><br>
+                    RM 10-15 per day<br>
+                    <small>MRT, Grab, or KTM train</small>
+                </div>
+                <div style="background: white; padding: 15px; border-radius: 10px; border-left: 4px solid #ffd93d;">
+                    <strong>Airport Transfer:</strong><br>
+                    SG$2-5 via MRT<br>
+                    <small>Changi Airport is well-connected</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Contacts -->
+        <div style="background: linear-gradient(135deg, #ff9a9e, #fecfef); color: white; padding: 25px; border-radius: 15px; margin: 20px 0;">
+            <h3 style="margin-bottom: 20px; text-align: center;">🆘 Emergency Info</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; backdrop-filter: blur(10px);">
+                    <strong>Singapore Emergency:</strong><br>
+                    Police: 999<br>
+                    Ambulance: 995
+                </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; backdrop-filter: blur(10px);">
+                    <strong>Malaysia Emergency:</strong><br>
+                    Police: 999<br>
+                    Ambulance: 999
+                </div>
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; backdrop-filter: blur(10px);">
+                    <strong>Tourist Hotlines:</strong><br>
+                    Singapore: 1800-736-2000<br>
+                    Malaysia: 1-300-88-5050
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; padding: 30px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 15px; margin-top: 30px;">
+            <h2 style="margin-bottom: 15px;">🌟 Have a Fantastic Adventure! 🌟</h2>
+            <p style="font-size: 1.1em; opacity: 0.9;">Create memories, capture moments, and enjoy every step of your Singapore-Malaysia journey!</p>
+            <div style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">
+                <p>📅 Generated for your Aug 9-17, 2025 trip</p>
+                <p>💾 Bookmark this page for offline access during your adventure</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToDay(dayNum) {
+            document.getElementById('day' + dayNum).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function scrollToBudget() {
+            document.getElementById('budget').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        function scrollToTips() {
+            document.getElementById('tips').scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Add smooth scrolling for all internal links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for any additional navigation
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1.05)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 100);
+                    }, 100);
+                });
+            });
+
+            // Add hover effects to day cards
+            const dayCards = document.querySelectorAll('.day-card');
+            dayCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // Service Worker for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('SW registered: ', registration);
+                })
+                .catch(function(registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
